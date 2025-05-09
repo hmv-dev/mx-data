@@ -11,6 +11,23 @@ const compat = new FlatCompat({
 
 const eslintConfig = [
   ...compat.extends("next/core-web-vitals", "next/typescript", "prettier"),
+  {
+    ignores: [
+      'node_modules',
+      'dist',
+      'build',
+      'src/generated/prisma/**', // Исключаем всё, что сгенерировано Prisma
+    ],
+  },
+  {
+    files: ["src/generated/prisma/**"],
+    rules: {
+      "@typescript-eslint/no-explicit-any": "off",
+      "@typescript-eslint/no-empty-object-type": "off",
+      '@typescript-eslint/no-unused-vars': ['warn', { argsIgnorePattern: '^_', varsIgnorePattern: '^_' }],
+      "@typescript-eslint/no-unused-expressions": "off",
+    },
+  }
 ];
 
 export default eslintConfig;
