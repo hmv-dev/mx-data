@@ -11,6 +11,7 @@ export default async function Home() {
 
   return (
     <main className="flex min-h-screen flex-col !p-5">
+      <h1>Courses</h1>
       <CreateCourseForm
         revalidatePagePath="/"
         className="max-w-[300px] !mb-5"
